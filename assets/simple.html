@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WebView Communication</title>
+</head>
+<body>
+  <h1>WebView Communication</h1>
+  <button id="sendButton">傳送資料到React Native</button>
+  <p id="tokenDisplay">Token: None</p>
+
+  <script>
+    // 處理從 React Native 傳來的訊息
+    document.addEventListener('message', (event) => {
+      const token = event.data; 
+      document.getElementById('tokenDisplay').innerText = `Token: ${token}`;
+      console.log('Received from React Native:', token);
+    });
+
+    // 點擊按鈕，傳送資料給 React Native
+    document.getElementById('sendButton').addEventListener('click', () => {
+      const dataToSend = 'Hello from Web!';
+      if (window.ReactNativeWebView) {
+        window.ReactNativeWebView.postMessage(dataToSend); // 傳送資料
+      }
+    });
+  </script>
+</body>
+</html>
