@@ -29,7 +29,7 @@ export default function App() {
   // const takePicture = () => {
   //   if (cameraRef.current) {
   //     try {
-  //       const photo = cameraRef.current.takePictureAsync();
+  //       const photo = cameraRef.current?.takePictureAsync();
   //         setPhoto(photo.uri);
   //         console.log('Photo captured:', photo);
   //     } catch (error) {
